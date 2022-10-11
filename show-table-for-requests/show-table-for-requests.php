@@ -147,11 +147,12 @@ class TT_Example_List_Table extends WP_List_Table {
      * @return string Text to be placed inside the column <td> (movie title only)
      **************************************************************************/
     function column_title($item){
+      $url = admin_url();
         
         //Build row actions
         $actions = array(
-            'edit'      => sprintf('<a style="display:none;" href="?page=%s&action=%s&movie=%s">Edit</a>',$_REQUEST['page'],'edit',$item['ID']),
-            'delete'    => sprintf('<a style="display:none;" href="?page=%s&action=%s&movie=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
+            'edit'      => sprintf('<a target="_blank" href="%s/post.php?post=%s&action=%s">Edit</a>', $url, $item['ID'],'edit'),
+            // 'delete'    => sprintf('<a style="display:none;" href="?page=%s&action=%s&movie=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
         );
         
         //Return the title contents
